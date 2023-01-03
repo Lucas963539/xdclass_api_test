@@ -1,3 +1,4 @@
+from util.db_util import MySqlUtil
 
 
 class XdclassTestCase:
@@ -9,6 +10,10 @@ class XdclassTestCase:
         :return:
         """
         print("loadAllCaseByApp")
+        my_db = MySqlUtil()
+        sql = "select * from `case` where app='{0}'".format(app)
+        results = my_db.query(sql)
+        return results
 
     def findCaseById(self,case_id):
         """
@@ -17,6 +22,10 @@ class XdclassTestCase:
         :return:
         """
         print("findCaseById")
+        my_db = MySqlUtil()
+        sql = "select * from `case` where id='{0}'".format(case_id)
+        results = my_db.query(sql, state="one")
+        return results
 
     def loadConfigByAppAndKey(self,app,key):
         """
@@ -26,6 +35,10 @@ class XdclassTestCase:
         :return:
         """
         print("loadConfigByAppAndKey")
+        my_db = MySqlUtil()
+        sql = "select * from `config` where app='{0}' and dict_key='{1}'".format(app, key)
+        results = my_db.query(sql, state="one")
+        return results
 
     def updateResultByCaseId(self,response, is_pass, msg, case_id):
         """
