@@ -46,4 +46,9 @@ class XdclassTestCase:
         """
         print("runAllCase")
 
-    def runCase(self,):
+    def runCase(self):
+        """
+        执行单个用例
+        :return:
+        """
+        print('runCase')
